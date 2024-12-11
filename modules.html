@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Learning Modules</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+<body>
+    <header>
+        <h1>Learning Modules</h1>
+    </header>
+    <main>
+        {% if modules %}
+            <ul>
+                {% for module in modules %}
+                    <li>
+                        <h2>{{ module.title }}</h2>
+                        <p>{{ module.description }}</p>
+                        <a href="{{ url_for('view_module', module_id=module.id) }}">View Module</a>
+                    </li>
+                {% endfor %}
+            </ul>
+        {% else %}
+            <p>No modules available.</p>
+        {% endif %}
+        <a href="{{ url_for('dashboard') }}">Back to Dashboard</a>
+    </main>
+</body>
+</html>
+
